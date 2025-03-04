@@ -1,6 +1,6 @@
 import Heading from "../../components/ui/Heading";
 
-import TransactionFilter from "@/app/components/transactions/TransactionFilter";
+import TransactionFilter from "../../../app/components/transactions/TransactionFilter";
 import {
   QueryClient,
   dehydrate,
