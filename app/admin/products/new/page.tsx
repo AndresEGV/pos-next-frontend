@@ -1,4 +1,3 @@
-import React from "react";
 import Heading from "../../../components/ui/Heading";
 import Link from "next/link";
 import AddProductForm from "@/app/components/products/AddProductForm";

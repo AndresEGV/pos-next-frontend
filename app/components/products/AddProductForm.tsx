@@ -24,7 +24,7 @@ export default function AddProductForm({
       toast.success(state.success);
       router.push("/admin/products");
     }
-  }, [state]);
+  }, [state, router]);
   return (
     <form action={dispatch} className="space-y-5">
       {children}

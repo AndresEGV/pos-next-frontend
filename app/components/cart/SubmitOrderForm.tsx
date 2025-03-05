@@ -29,7 +29,7 @@ export default function SubmitOrderForm() {
       toast.success(state.success);
       clearOrder();
     }
-  }, [state]);
+  }, [state, clearOrder]);
 
   return (
     <form action={dispatch}>

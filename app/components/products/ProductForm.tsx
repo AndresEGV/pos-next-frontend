@@ -1,16 +1,32 @@
-import { CategoriesResponseSchema, Product } from "@/src/schemas";
-import UploadProductImage from "./UploadProductImage";
+"use client";
 
-async function getCategories() {
-  const url = `${process.env.API_URL}/categories`;
-  const req = await fetch(url);
-  const json = await req.json();
-  const categories = CategoriesResponseSchema.parse(json);
-  return categories;
+import { CategoriesResponseSchema, Category, Product } from "@/src/schemas";
+import UploadProductImage from "./UploadProductImage";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+
+interface ProductFormProps {
+  product?: Product;
 }
 
-export default async function ProductForm({ product }: { product?: Product }) {
-  const categories = await getCategories();
+export default function ProductForm({ product }: ProductFormProps) {
+  const [categories, setCategories] = useState<Category[]>([]);
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/categories`
+        );
+        const data = await response.json();
+        const categories = CategoriesResponseSchema.parse(data);
+        setCategories(categories);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+        toast.error("Error al cargar categorías");
+      }
+    };
+    fetchCategories();
+  }, []);
   return (
     <>
       <div className="space-y-2 ">
