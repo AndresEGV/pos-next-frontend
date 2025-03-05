@@ -7,7 +7,7 @@ export default function NotFound() {
     <div className="text-center">
       <Heading>Producto No encontrado</Heading>
       <p>
-        Tal vez quieras volver a{" "}
+        Tal vez quieras regresar a{" "}
         <Link className="text-green-400" href={"/admin/products?page=1"}>
           Productos
         </Link>
